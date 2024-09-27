@@ -9,19 +9,43 @@ block content
                 .card__holder-label Card Holder
                 .card__holder-name Jan Kowalski
         form.card-form
-            label(for="card-number") Card Number
-            input#card-number.card-form__input(type="text")
-            select.card-form__input
-                option 01
-                option 02
-                option 03
-                option 04
-                option 05
-                option 06
-                option 07
-                option 08
-                option 09
-                option 10
-                option 11
-                option 12
+            .form-field
+                label.form-field__label(for="card-number") Card Number
+                input#card-number.form-field__input(type="text")
+            .form-field
+                label.form-field__label(for="card-name") Card Name
+                input#card-name.form-field__input(type="text")
+            .form-row
+                .form-field.form-row__col-expand
+                    label.form-field__label(for="expiration-date") Expiration Date
+                    .date-select
+                        select#expiration-date.form-field__input(placeholder="Month")
+                            option 01
+                            option 02
+                            option 03
+                            option 04
+                            option 05
+                            option 06
+                            option 07
+                            option 08
+                            option 09
+                            option 10
+                            option 11
+                            option 12
+                        select#expiration-date.form-field__input(placeholder="Year")
+                            option 2019
+                            option 2020
+                            option 2021
+                            option 2022
+                            option 2023
+                            option 2024
+                            option 2025
+                            option 2026
+                            option 2027
+                            option 2028
+                            option 2029
+                            option 2030
+                .form-field.form-row__col-narrow
+                    label.form-field__label(for="ccv") Card Name
+                    input#ccv.form-field__input(type="text")
             button.card-form__submit(type="submit") Submit
