@@ -41,11 +41,13 @@
   gap: 1rem;
 
   &__col-expand {
-    flex-grow: 1;
+    flex-grow: 2;
+    flex-basis: 0;
   }
 
   &__col-narrow {
-    width: 100px;
+    flex-grow: 1;
+    flex-basis: 0;
   }
 }
 
