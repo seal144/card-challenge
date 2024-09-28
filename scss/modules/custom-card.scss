@@ -13,9 +13,9 @@
   &__number {
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.75rem;
+    left: 1rem;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
     font-weight: bold;
     white-space: nowrap;
   }
@@ -26,8 +26,36 @@
     bottom: 1rem;
   }
 
-  &__holder-label {
+  &__expiration {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+  }
+
+  &__chip {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background-image: url('../../images/chip.png');
+  }
+
+  &__logo {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-image: url('../../images/visa.png');
+  }
+}
+
+.card-info {
+  &__label {
     font-size: 0.75rem;
     color: gray;
+    margin-bottom: 0.25rem;
+  }
+
+  &__value {
+    font-size: 0.875rem;
+    text-transform: uppercase;
   }
 }

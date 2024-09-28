@@ -3,11 +3,21 @@ include defaults/mixins.pug
 block content
     .container
         .card
-            +addPicture('background.jpg', 'card__preview-background', 'width: 100%; height: 100%; object-fit: cover; border-radius: 0.5rem;')
+            +addPicture('background.jpg', '', 'width: 100%; height: 100%; object-fit: cover; border-radius: 0.5rem; filter: brightness(75%);')
             .card__number #### #### #### ####
-            .card__holder
-                .card__holder-label Card Holder
-                .card__holder-name Jan Kowalski
+            .card__holder.card-info
+                .card-info__label Card Holder
+                .card-info__value Jan Kowalski
+            .card__expiration.card-info
+                .card-info__label Expires
+                .card-info__value
+                    span MM
+                    span /
+                    span YY
+            .card__chip
+                +addPicture('chip.png', '', 'width: 45px; height: 36px; object-fit: cover;')
+            .card__logo
+                +addPicture('visa.png', '', 'width: 70px; height: 38px; object-fit: cover;')
         form.card-form
             .form-field
                 label.form-field__label(for="card-number") Card Number
