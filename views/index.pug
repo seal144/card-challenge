@@ -2,9 +2,9 @@ extends defaults/layout.pug
 include defaults/mixins.pug
 block content
     .container
-        .card
+        .card#card
             +addPicture('background.jpg', '', 'width: 100%; height: 100%; object-fit: cover; border-radius: 0.5rem; filter: brightness(75%);')
-            .card__number #### #### #### ####
+            #number-card.card__number #### #### #### ####
             .card__holder.card-info
                 .card-info__label Card Holder
                 .card-info__value Jan Kowalski
@@ -18,18 +18,19 @@ block content
                 +addPicture('chip.png', '', 'width: 45px; height: 36px; object-fit: cover;')
             .card__logo
                 +addPicture('visa.png', '', 'width: 70px; height: 38px; object-fit: cover;')
+            #card__focus-frame.card__focus-frame
         form.card-form
             .form-field
-                label.form-field__label(for="card-number") Card Number
-                input#card-number.form-field__input(type="text")
+                label.form-field__label(for="number-input") Card Number
+                input#number-input.form-field__input(type="number")
             .form-field
-                label.form-field__label(for="card-name") Card Name
-                input#card-name.form-field__input(type="text")
+                label.form-field__label(for="name-input") Card Name
+                input#name-input.form-field__input(type="text")
             .form-row
                 .form-field.form-row__col-expand
-                    label.form-field__label(for="expiration-date") Expiration Date
+                    label.form-field__label(for="date-month-select") Expiration Date
                     .date-select
-                        select#expiration-date.form-field__input(placeholder="Month")
+                        select#date-month-select.form-field__input(placeholder="Month")
                             option 01
                             option 02
                             option 03
@@ -42,7 +43,7 @@ block content
                             option 10
                             option 11
                             option 12
-                        select#expiration-date.form-field__input(placeholder="Year")
+                        select#date-year-select.form-field__input(placeholder="Year")
                             option 2019
                             option 2020
                             option 2021
@@ -56,6 +57,6 @@ block content
                             option 2029
                             option 2030
                 .form-field.form-row__col-narrow
-                    label.form-field__label(for="ccv") Card Name
-                    input#ccv.form-field__input(type="text")
+                    label.form-field__label(for="ccv-input") CCV
+                    input#ccv-input.form-field__input(type="text")
             button.card-form__submit(type="submit") Submit

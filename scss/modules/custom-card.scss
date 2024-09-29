@@ -5,7 +5,7 @@
   transform: translate(-50%, -50%);
   width: 300px;
   height: 200px;
-  border-radius: 0.5rem;
+  border-radius: $card-border-radius;
   box-shadow: $card-shadow;
   background-image: url('../../images/background.jpg');
   color: white;
@@ -13,7 +13,8 @@
   &__number {
     position: absolute;
     top: 50%;
-    left: 1rem;
+    left: 0.5rem;
+    padding: 0.25rem 0.5rem;
     transform: translateY(-50%);
     font-size: 1.5rem;
     font-weight: bold;
@@ -44,6 +45,22 @@
     top: 1rem;
     right: 1rem;
     background-image: url('../../images/visa.png');
+  }
+
+  &__focus-frame {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #bbb;
+    border-radius: $input-border-radius;
+    transition: all 0.2s ease-in-out;
+
+    &--active {
+      opacity: 1;
+    }
   }
 }
 
