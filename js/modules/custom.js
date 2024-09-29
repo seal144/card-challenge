@@ -9,6 +9,7 @@ export default function () {
 
   const numberCard = document.querySelector('#number-card');
   const nameCard = document.querySelector('#name-card');
+  const nameCardPlaceholder = document.querySelector('#name-card-placeholder');
   const dateCard = document.querySelector('#date-card');
 
   const focusCardArea = (cardArea) => {
@@ -30,6 +31,7 @@ export default function () {
     cardFocusFrame.style.left = '';
   };
 
+  //ADD EVENT LISTENERS
   numberInput.addEventListener('focus', () => {
     focusCardArea(numberCard);
   });
@@ -38,7 +40,13 @@ export default function () {
   nameInput.addEventListener('focus', () => {
     focusCardArea(nameCard);
   });
-  nameInput.addEventListener('blur', unfocusCardArea);
+  nameInput.addEventListener('blur', () => {
+    unfocusCardArea();
+    if (nameInput.value.length === 0) {
+      nameCardPlaceholder.classList.add('down-appear');
+      nameCardPlaceholder.classList.remove('up-disappear');
+    }
+  });
 
   dateMonthSelect.addEventListener('focus', () => {
     focusCardArea(dateCard);
@@ -49,4 +57,11 @@ export default function () {
     focusCardArea(dateCard);
   });
   dateYearSelect.addEventListener('blur', unfocusCardArea);
+
+  nameInput.addEventListener('input', () => {
+    if (nameInput.value.length > 0) {
+      nameCardPlaceholder.classList.remove('down-appear');
+      nameCardPlaceholder.classList.add('up-disappear');
+    }
+  });
 }
