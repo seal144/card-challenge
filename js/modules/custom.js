@@ -9,6 +9,7 @@ export default function () {
 
   const numberCard = document.querySelector('#number-card');
   const nameCard = document.querySelector('#name-card');
+  const nameCardValue = document.querySelector('#name-card-value');
   const nameCardPlaceholder = document.querySelector('#name-card-placeholder');
   const dateCard = document.querySelector('#date-card');
 
@@ -58,10 +59,46 @@ export default function () {
   });
   dateYearSelect.addEventListener('blur', unfocusCardArea);
 
-  nameInput.addEventListener('input', () => {
+  nameInput.addEventListener('input', (event) => {
     if (nameInput.value.length > 0) {
       nameCardPlaceholder.classList.remove('down-appear');
       nameCardPlaceholder.classList.add('up-disappear');
+    }
+
+    nameInput.value = nameInput.value.trimStart();
+
+    if (nameInput.value.length >= 25) {
+      nameInput.value = nameInput.value.slice(0, 24);
+      return;
+    }
+
+    const syncValue = () => {
+      const newNameContent = [];
+      nameInput.value.split('').forEach((letter) => {
+        const newLetter = document.createElement('span');
+        newLetter.innerHTML = letter;
+        newNameContent.push(newLetter);
+      });
+      nameCardValue.innerHTML = '';
+      nameCardValue.append(...newNameContent);
+    };
+
+    if (event.inputType === 'insertText') {
+      const newLetterSpan = document.createElement('span');
+      const newLetter = nameInput.value.charAt(nameInput.value.length - 1);
+      if (newLetter === ' ') {
+        newLetterSpan.innerHTML = '&nbsp;';
+      } else {
+        newLetterSpan.innerHTML = newLetter;
+      }
+      newLetterSpan.classList.add('right-appear');
+      nameCardValue.appendChild(newLetterSpan);
+
+      if (nameInput.value !== [...nameCardValue.children].map((child) => child.innerHTML).join('')) {
+        syncValue();
+      }
+    } else {
+      syncValue();
     }
   });
 }

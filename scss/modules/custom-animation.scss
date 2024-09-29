@@ -1,9 +1,11 @@
 @keyframes up-disappear {
   0% {
+    display: inline-block;
     opacity: 1;
     transform: translateY(0);
   }
   100% {
+    display: none;
     opacity: 0;
     transform: translateY(-100%);
   }
@@ -11,21 +13,38 @@
 
 @keyframes down-appear {
   0% {
+    display: none;
     opacity: 0;
     transform: translateY(100%);
   }
   100% {
+    display: inline-block;
     opacity: 1;
     transform: translateY(0);
   }
 }
 
+@keyframes right-appear {
+  0% {
+    display: none;
+    opacity: 0;
+    transform: translateX(100%) rotate(90deg);
+  }
+  100% {
+    display: inline-block;
+    opacity: 1;
+    transform: translateX(0) rotate(0deg);
+  }
+}
+
 .up-disappear {
-  display: inline-block;
-  animation: up-disappear 0.5s ease-in-out forwards;
+  animation: up-disappear 0.3s ease-in-out forwards;
 }
 
 .down-appear {
-  display: inline-block;
-  animation: down-appear 0.5s ease-in-out forwards;
+  animation: down-appear 0.3s ease-in-out forwards;
+}
+
+.right-appear {
+  animation: right-appear 0.3s ease-in-out forwards;
 }

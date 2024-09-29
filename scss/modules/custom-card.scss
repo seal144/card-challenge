@@ -3,8 +3,8 @@
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 300px;
-  height: 200px;
+  width: 360px;
+  height: 240px;
   border-radius: $card-border-radius;
   box-shadow: $card-shadow;
   background-image: url('../../images/background.jpg');
@@ -16,7 +16,7 @@
     left: 0.5rem;
     padding: 0.25rem 0.5rem;
     transform: translateY(-50%);
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     white-space: nowrap;
   }
 
@@ -71,13 +71,18 @@
 
 .card-info {
   &__label {
-    font-size: 0.75rem;
+    font-size: 0.7rem;
     color: gray;
     margin-bottom: 0.25rem;
   }
 
   &__value {
-    font-size: 0.875rem;
+    font-size: 0.75rem;
     text-transform: uppercase;
+
+    &#name-card-placeholder {
+      position: absolute;
+      top: 21px;
+    }
   }
 }

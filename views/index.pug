@@ -8,8 +8,8 @@ block content
             .card__footer
                 #name-card.card__name.card-info
                     .card-info__label Card Holder
-                    .card-info__value 
-                        span#name-card-placeholder Ad Soyad
+                    #name-card-value.card-info__value 
+                    #name-card-placeholder.card-info__value Ad Soyad
                 #date-card.card__expiration.card-info
                     .card-info__label Expires
                     .card-info__value
@@ -17,9 +17,9 @@ block content
                         span /
                         span YY
             .card__chip
-                +addPicture('chip.png', '', 'width: 45px; height: 36px; object-fit: cover;')
+                +addPicture('chip.png', '', 'width: 50px; height: 40px; object-fit: cover;')
             .card__logo
-                +addPicture('visa.png', '', 'width: 70px; height: 38px; object-fit: cover;')
+                +addPicture('visa.png', '', 'width: 74px; height: 40px; object-fit: cover;')
             #card__focus-frame.card__focus-frame
         form.card-form
             .form-field
