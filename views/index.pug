@@ -2,41 +2,45 @@ extends defaults/layout.pug
 include defaults/mixins.pug
 block content
     .container
-        .card#card
-            +addPicture('background.jpg', '', 'width: 100%; height: 100%; object-fit: cover; border-radius: 0.5rem; filter: brightness(75%);')
-            #number-card.card__number
-                span#digit-0.card__digit #
-                span#digit-1.card__digit #
-                span#digit-2.card__digit #
-                span#digit-3.card__digit #
-                span#digit-4.card__digit #
-                span#digit-5.card__digit #
-                span#digit-6.card__digit #
-                span#digit-7.card__digit #
-                span#digit-8.card__digit #
-                span#digit-9.card__digit #
-                span#digit-10.card__digit #
-                span#digit-11.card__digit #
-                span#digit-12.card__digit #
-                span#digit-13.card__digit #
-                span#digit-14.card__digit #
-                span#digit-15.card__digit #
-            .card__footer
-                #name-card.card__name.card-info
-                    .card-info__label Card Holder
-                    #name-card-value.card-info__value 
-                    #name-card-placeholder.card-info__value Ad Soyad
-                #date-card.card__expiration.card-info
-                    .card-info__label Expires
-                    #date-value-card.card-info__value
-                        span#date-month MM
-                        span#date-divider /
-                        span#date-year YY
-            .card__chip
-                +addPicture('chip.png', '', 'width: 50px; height: 40px; object-fit: cover;')
-            .card__logo
-                +addPicture('visa.png', '', 'width: 74px; height: 40px; object-fit: cover;')
-            #card__focus-frame.card__focus-frame
+        #card-container
+            #card.card
+                .card__face
+                    +addPicture('background.jpg', '', 'width: 100%; height: 100%; object-fit: cover; border-radius: 0.5rem; filter: brightness(75%);')
+                    #number-card.card__number
+                        span#digit-0.card__digit #
+                        span#digit-1.card__digit #
+                        span#digit-2.card__digit #
+                        span#digit-3.card__digit #
+                        span#digit-4.card__digit #
+                        span#digit-5.card__digit #
+                        span#digit-6.card__digit #
+                        span#digit-7.card__digit #
+                        span#digit-8.card__digit #
+                        span#digit-9.card__digit #
+                        span#digit-10.card__digit #
+                        span#digit-11.card__digit #
+                        span#digit-12.card__digit #
+                        span#digit-13.card__digit #
+                        span#digit-14.card__digit #
+                        span#digit-15.card__digit #
+                    .card__footer
+                        #name-card.card__name.card-info
+                            .card-info__label Card Holder
+                            #name-card-value.card-info__value 
+                            #name-card-placeholder.card-info__value Ad Soyad
+                        #date-card.card__expiration.card-info
+                            .card-info__label Expires
+                            #date-value-card.card-info__value
+                                span#date-month MM
+                                span#date-divider /
+                                span#date-year YY
+                    .card__chip
+                        +addPicture('chip.png', '', 'width: 50px; height: 40px; object-fit: cover;')
+                    .card__logo
+                        +addPicture('visa.png', '', 'width: 74px; height: 40px; object-fit: cover;')
+                    #card__focus-frame.card__focus-frame
+                .card__face.card__face--back
+                    +addPicture('background.jpg', '', 'width: 100%; height: 100%; object-fit: cover; border-radius: 0.5rem; filter: brightness(75%);')
         form.card-form
             .form-field
                 label.form-field__label(for="number-input") Card Number

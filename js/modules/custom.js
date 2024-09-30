@@ -15,6 +15,7 @@ export default function () {
   const nameCardPlaceholder = document.getElementById('name-card-placeholder');
   const dateCard = document.getElementById('date-card');
   const dateValueCard = document.getElementById('date-value-card');
+  const ccvInput = document.getElementById('ccv-input');
 
   //CONSTANTS
 
@@ -82,13 +83,22 @@ export default function () {
   };
 
   //EVENT LISTENERS FOCUS/BLUR
+
   numberInput.addEventListener('focus', () => {
-    focusCardArea(numberCard);
+    if (card.classList.contains('flipped')) {
+      setTimeout(() => {
+        focusCardArea(numberCard);
+      }, defaultDelay * 2);
+    } else focusCardArea(numberCard);
   });
   numberInput.addEventListener('blur', unfocusCardArea);
 
   nameInput.addEventListener('focus', () => {
-    focusCardArea(nameCard);
+    if (card.classList.contains('flipped')) {
+      setTimeout(() => {
+        focusCardArea(nameCard);
+      }, defaultDelay * 2);
+    } else focusCardArea(nameCard);
   });
   nameInput.addEventListener('blur', () => {
     unfocusCardArea();
@@ -99,14 +109,32 @@ export default function () {
   });
 
   dateMonthSelect.addEventListener('focus', () => {
-    focusCardArea(dateCard);
+    if (card.classList.contains('flipped')) {
+      setTimeout(() => {
+        focusCardArea(dateCard);
+      }, defaultDelay * 2);
+    } else focusCardArea(dateCard);
   });
   dateMonthSelect.addEventListener('blur', unfocusCardArea);
 
   dateYearSelect.addEventListener('focus', () => {
-    focusCardArea(dateCard);
+    if (card.classList.contains('flipped')) {
+      setTimeout(() => {
+        focusCardArea(dateCard);
+      }, defaultDelay * 2);
+    } else focusCardArea(dateCard);
   });
   dateYearSelect.addEventListener('blur', unfocusCardArea);
+
+  ccvInput.addEventListener('focus', () => {
+    card.classList.add('flipped');
+  });
+
+  ccvInput.addEventListener('blur', () => {
+    setTimeout(() => {
+      card.classList.remove('flipped');
+    }, 0);
+  });
 
   //EVENT LISTENERS INPUT
 
