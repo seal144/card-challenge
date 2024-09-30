@@ -4,7 +4,23 @@ block content
     .container
         .card#card
             +addPicture('background.jpg', '', 'width: 100%; height: 100%; object-fit: cover; border-radius: 0.5rem; filter: brightness(75%);')
-            #number-card.card__number #### #### #### ####
+            #number-card.card__number
+                span#digit-0.card__digit #
+                span#digit-1.card__digit #
+                span#digit-2.card__digit #
+                span#digit-3.card__digit #
+                span#digit-4.card__digit #
+                span#digit-5.card__digit #
+                span#digit-6.card__digit #
+                span#digit-7.card__digit #
+                span#digit-8.card__digit #
+                span#digit-9.card__digit #
+                span#digit-10.card__digit #
+                span#digit-11.card__digit #
+                span#digit-12.card__digit #
+                span#digit-13.card__digit #
+                span#digit-14.card__digit #
+                span#digit-15.card__digit #
             .card__footer
                 #name-card.card__name.card-info
                     .card-info__label Card Holder
@@ -24,7 +40,7 @@ block content
         form.card-form
             .form-field
                 label.form-field__label(for="number-input") Card Number
-                input#number-input.form-field__input(type="number")
+                input#number-input.form-field__input(type="text")
             .form-field
                 label.form-field__label(for="name-input") Card Name
                 input#name-input.form-field__input(type="text")

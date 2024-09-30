@@ -1,5 +1,6 @@
 .card {
   position: absolute;
+  font-family: 'source-code-pro', monospace;
   top: 0;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -15,9 +16,9 @@
     top: 50%;
     left: 0.5rem;
     padding: 0.25rem 0.5rem;
+    width: 300px;
+    height: 40px;
     transform: translateY(-50%);
-    font-size: 1.75rem;
-    white-space: nowrap;
   }
 
   &__footer {
@@ -77,12 +78,65 @@
   }
 
   &__value {
-    font-size: 0.75rem;
     text-transform: uppercase;
 
     &#name-card-placeholder {
       position: absolute;
       top: 21px;
     }
+  }
+}
+
+.card__digit {
+  position: absolute;
+  font-size: 1.75rem;
+
+  &#digit-0 {
+    left: 0.5rem;
+  }
+  &#digit-1 {
+    left: 1.5rem;
+  }
+  &#digit-2 {
+    left: 2.5rem;
+  }
+  &#digit-3 {
+    left: 3.5rem;
+  }
+  &#digit-4 {
+    left: 5rem;
+  }
+  &#digit-5 {
+    left: 6rem;
+  }
+  &#digit-6 {
+    left: 7rem;
+  }
+  &#digit-7 {
+    left: 8rem;
+  }
+  &#digit-8 {
+    left: 9.5rem;
+  }
+  &#digit-9 {
+    left: 10.5rem;
+  }
+  &#digit-10 {
+    left: 11.5rem;
+  }
+  &#digit-11 {
+    left: 12.5rem;
+  }
+  &#digit-12 {
+    left: 14rem;
+  }
+  &#digit-13 {
+    left: 15rem;
+  }
+  &#digit-14 {
+    left: 16rem;
+  }
+  &#digit-15 {
+    left: 17rem;
   }
 }

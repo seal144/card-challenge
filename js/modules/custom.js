@@ -1,4 +1,6 @@
 export default function () {
+  //SELECTORS
+
   const card = document.querySelector('#card');
   const cardFocusFrame = document.querySelector('#card__focus-frame');
 
@@ -12,6 +14,11 @@ export default function () {
   const nameCardValue = document.querySelector('#name-card-value');
   const nameCardPlaceholder = document.querySelector('#name-card-placeholder');
   const dateCard = document.querySelector('#date-card');
+
+  //CONSTANTS
+  const defaultDelay = 300;
+
+  //HELPERS
 
   const focusCardArea = (cardArea) => {
     const cardAreaRect = cardArea.getBoundingClientRect();
@@ -32,7 +39,15 @@ export default function () {
     cardFocusFrame.style.left = '';
   };
 
-  //ADD EVENT LISTENERS
+  const validateMaxChars = (input, charNumber) => {
+    if (input.value.length > charNumber) {
+      input.value = input.value.slice(0, charNumber);
+      return false;
+    }
+    return true;
+  };
+
+  //EVENT LISTENERS FOCUS/BLUR
   numberInput.addEventListener('focus', () => {
     focusCardArea(numberCard);
   });
@@ -59,6 +74,47 @@ export default function () {
   });
   dateYearSelect.addEventListener('blur', unfocusCardArea);
 
+  //EVENT LISTENERS INPUT
+
+  numberInput.addEventListener('input', (event) => {
+    if (!validateMaxChars(numberInput, 16)) {
+      return;
+    }
+    if (numberInput.value.match(/[^0-9]/)) {
+      numberInput.value = numberInput.value.replace(/[^0-9]/g, '');
+      return;
+    }
+
+    const oldValue = [...document.querySelectorAll('.card__digit:not(.up-disappear)')].map(
+      (spanDigit) => spanDigit.innerHTML
+    );
+    const newValue = numberInput.value.padEnd(16, '#').split('');
+    const changedIndexes = [];
+    oldValue.forEach((digit, index) => (digit !== newValue[index] ? changedIndexes.push(index) : null));
+
+    changedIndexes.forEach((index) => {
+      const digitId = `digit-${index}`;
+
+      const oldDigit = document.getElementById(digitId);
+      oldDigit.classList.add('up-disappear');
+      oldDigit.style.left = `${0.5 + index * 1 + 0.5 * Math.floor(index / 4)}rem`;
+      oldDigit.id = '';
+      setTimeout(() => {
+        oldDigit.remove();
+      }, defaultDelay * 2);
+
+      const newDigit = document.createElement('span');
+      newDigit.id = digitId;
+      newDigit.classList.add('card__digit');
+      newDigit.classList.add('down-appear');
+      setTimeout(() => {
+        newDigit.classList.remove('down-appear');
+      }, defaultDelay);
+      newDigit.innerHTML = newValue[index];
+      numberCard.insertBefore(newDigit, oldDigit);
+    });
+  });
+
   nameInput.addEventListener('input', (event) => {
     if (nameInput.value.length > 0) {
       nameCardPlaceholder.classList.remove('down-appear');
@@ -67,8 +123,7 @@ export default function () {
 
     nameInput.value = nameInput.value.trimStart();
 
-    if (nameInput.value.length >= 25) {
-      nameInput.value = nameInput.value.slice(0, 24);
+    if (!validateMaxChars(nameInput, 27)) {
       return;
     }
 
