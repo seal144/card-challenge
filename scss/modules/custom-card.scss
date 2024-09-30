@@ -84,6 +84,27 @@
       position: absolute;
       top: 21px;
     }
+
+    &#date-value-card {
+      position: relative;
+      width: 48px;
+      height: 19px;
+
+      #date-month {
+        position: absolute;
+      }
+
+      #date-divider {
+        position: absolute;
+        left: 19px;
+      }
+
+      #date-year,
+      #date-year-prev {
+        position: absolute;
+        left: 28px;
+      }
+    }
   }
 }
 
@@ -91,52 +112,68 @@
   position: absolute;
   font-size: 1.75rem;
 
-  &#digit-0 {
+  &#digit-0,
+  &#digit-0-prev {
     left: 0.5rem;
   }
-  &#digit-1 {
+  &#digit-1,
+  &#digit-1-prev {
     left: 1.5rem;
   }
-  &#digit-2 {
+  &#digit-2,
+  &#digit-2-prev {
     left: 2.5rem;
   }
-  &#digit-3 {
+  &#digit-3,
+  &#digit-3-prev {
     left: 3.5rem;
   }
-  &#digit-4 {
+  &#digit-4,
+  &#digit-4-prev {
     left: 5rem;
   }
-  &#digit-5 {
+  &#digit-5,
+  &#digit-5-prev {
     left: 6rem;
   }
-  &#digit-6 {
+  &#digit-6,
+  &#digit-6-prev {
     left: 7rem;
   }
-  &#digit-7 {
+  &#digit-7,
+  &#digit-7-prev {
     left: 8rem;
   }
-  &#digit-8 {
+  &#digit-8,
+  &#digit-8-prev {
     left: 9.5rem;
   }
-  &#digit-9 {
+  &#digit-9,
+  &#digit-9-prev {
     left: 10.5rem;
   }
-  &#digit-10 {
+  &#digit-10,
+  &#digit-10-prev {
     left: 11.5rem;
   }
-  &#digit-11 {
+  &#digit-11,
+  &#digit-11-prev {
     left: 12.5rem;
   }
-  &#digit-12 {
+  &#digit-12,
+  &#digit-12-prev {
     left: 14rem;
   }
-  &#digit-13 {
+  &#digit-13,
+  &#digit-13-prev {
     left: 15rem;
   }
-  &#digit-14 {
+  &#digit-14,
+  &#digit-14-prev {
     left: 16rem;
   }
-  &#digit-15 {
+  &#digit-15,
+  &#digit-15-prev {
     left: 17rem;
   }
 }

@@ -1,22 +1,35 @@
 export default function () {
   //SELECTORS
 
-  const card = document.querySelector('#card');
-  const cardFocusFrame = document.querySelector('#card__focus-frame');
+  const card = document.getElementById('card');
+  const cardFocusFrame = document.getElementById('card__focus-frame');
 
-  const numberInput = document.querySelector('#number-input');
-  const nameInput = document.querySelector('#name-input');
-  const dateMonthSelect = document.querySelector('#date-month-select');
-  const dateYearSelect = document.querySelector('#date-year-select');
+  const numberInput = document.getElementById('number-input');
+  const nameInput = document.getElementById('name-input');
+  const dateMonthSelect = document.getElementById('date-month-select');
+  const dateYearSelect = document.getElementById('date-year-select');
 
-  const numberCard = document.querySelector('#number-card');
-  const nameCard = document.querySelector('#name-card');
-  const nameCardValue = document.querySelector('#name-card-value');
-  const nameCardPlaceholder = document.querySelector('#name-card-placeholder');
-  const dateCard = document.querySelector('#date-card');
+  const numberCard = document.getElementById('number-card');
+  const nameCard = document.getElementById('name-card');
+  const nameCardValue = document.getElementById('name-card-value');
+  const nameCardPlaceholder = document.getElementById('name-card-placeholder');
+  const dateCard = document.getElementById('date-card');
+  const dateValueCard = document.getElementById('date-value-card');
 
   //CONSTANTS
+
   const defaultDelay = 300;
+
+  //SETUP
+
+  const currentYear = new Date().getFullYear();
+
+  for (let i = 0; i < 12; i++) {
+    const option = document.createElement('option');
+    option.value = i + currentYear;
+    option.innerHTML = i + currentYear;
+    dateYearSelect.appendChild(option);
+  }
 
   //HELPERS
 
@@ -47,6 +60,27 @@ export default function () {
     return true;
   };
 
+  const replaceElementWithAnimation = (id, newInnerHTML, container, className) => {
+    const oldElement = document.getElementById(id);
+    oldElement.classList.add('up-disappear');
+    oldElement.id = `${id}-prev`;
+    setTimeout(() => {
+      oldElement.remove();
+    }, defaultDelay * 2);
+
+    const newElement = document.createElement('span');
+    newElement.id = id;
+    if (className) {
+      newElement.classList.add(className);
+    }
+    newElement.classList.add('down-appear');
+    setTimeout(() => {
+      newElement.classList.remove('down-appear');
+    }, defaultDelay);
+    newElement.innerHTML = newInnerHTML;
+    container.insertBefore(newElement, oldElement);
+  };
+
   //EVENT LISTENERS FOCUS/BLUR
   numberInput.addEventListener('focus', () => {
     focusCardArea(numberCard);
@@ -58,7 +92,7 @@ export default function () {
   });
   nameInput.addEventListener('blur', () => {
     unfocusCardArea();
-    if (nameInput.value.length === 0) {
+    if (nameInput.value.length === 0 && nameCardPlaceholder.classList.contains('up-disappear')) {
       nameCardPlaceholder.classList.add('down-appear');
       nameCardPlaceholder.classList.remove('up-disappear');
     }
@@ -95,23 +129,7 @@ export default function () {
     changedIndexes.forEach((index) => {
       const digitId = `digit-${index}`;
 
-      const oldDigit = document.getElementById(digitId);
-      oldDigit.classList.add('up-disappear');
-      oldDigit.style.left = `${0.5 + index * 1 + 0.5 * Math.floor(index / 4)}rem`;
-      oldDigit.id = '';
-      setTimeout(() => {
-        oldDigit.remove();
-      }, defaultDelay * 2);
-
-      const newDigit = document.createElement('span');
-      newDigit.id = digitId;
-      newDigit.classList.add('card__digit');
-      newDigit.classList.add('down-appear');
-      setTimeout(() => {
-        newDigit.classList.remove('down-appear');
-      }, defaultDelay);
-      newDigit.innerHTML = newValue[index];
-      numberCard.insertBefore(newDigit, oldDigit);
+      replaceElementWithAnimation(digitId, newValue[index], numberCard, 'card__digit');
     });
   });
 
@@ -155,5 +173,13 @@ export default function () {
     } else {
       syncValue();
     }
+  });
+
+  dateMonthSelect.addEventListener('input', () => {
+    replaceElementWithAnimation('date-month', dateMonthSelect.value, dateValueCard);
+  });
+
+  dateYearSelect.addEventListener('input', () => {
+    replaceElementWithAnimation('date-year', dateYearSelect.value.slice(-2), dateValueCard);
   });
 }

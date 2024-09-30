@@ -28,10 +28,10 @@ block content
                     #name-card-placeholder.card-info__value Ad Soyad
                 #date-card.card__expiration.card-info
                     .card-info__label Expires
-                    .card-info__value
-                        span MM
-                        span /
-                        span YY
+                    #date-value-card.card-info__value
+                        span#date-month MM
+                        span#date-divider /
+                        span#date-year YY
             .card__chip
                 +addPicture('chip.png', '', 'width: 50px; height: 40px; object-fit: cover;')
             .card__logo
@@ -62,18 +62,6 @@ block content
                             option 11
                             option 12
                         select#date-year-select.form-field__input(placeholder="Year")
-                            option 2019
-                            option 2020
-                            option 2021
-                            option 2022
-                            option 2023
-                            option 2024
-                            option 2025
-                            option 2026
-                            option 2027
-                            option 2028
-                            option 2029
-                            option 2030
                 .form-field.form-row__col-narrow
                     label.form-field__label(for="ccv-input") CCV
                     input#ccv-input.form-field__input(type="text")
